@@ -9,10 +9,10 @@ tokentab reads the session logs that Claude Code, Codex, Cursor and Gemini CLI a
 Clone the repo and install it into your environment:
 
 ```
-git clone https://github.com/wzchav/tokentab
+git clone https://github.com/damejan80/tokentab
 cd tokentab
 pip install .
-tokentab
+python cli.py
 ```
 
 That puts a `tokentab` command on your path. You can also run it without installing at all - see [From source](#from-source).
@@ -35,20 +35,20 @@ If a tool isn't installed, it's just skipped. You'll only ever see the tools you
 The bare command gives you the last 7 days across everything:
 
 ```
-tokentab
+python cli.py
 ```
 
 Some other things it does:
 
 ```
-tokentab today                     # just today
-tokentab month                     # this calendar month
-tokentab -p all                    # everything you've ever run
-tokentab --provider claude         # one tool only
-tokentab --project myapp           # one project
-tokentab --from 2026-06-01 --to 2026-06-15   # a specific window
-tokentab --json | jq .             # machine-readable, pipe it wherever
-tokentab web                       # the same thing, in a browser, with charts
+python cli.py -today                     # just today
+python cli.py -month                     # this calendar month
+python cli.py -p all                    # everything you've ever run
+python cli.py --provider claude         # one tool only
+python cli.py --project myapp           # one project
+python cli.pyb --from 2026-06-01 --to 2026-06-15   # a specific window
+python cli.py --json | jq .             # machine-readable, pipe it wherever
+python cli.py -web                       # the same thing, in a browser, with charts
 ```
 
 Colour drops automatically when you pipe the output somewhere, so pasting into a PR or a chat doesn't drag a load of escape codes along with it.
@@ -56,7 +56,7 @@ Colour drops automatically when you pipe the output somewhere, so pasting into a
 ### The web dashboard
 
 ```
-tokentab web
+python cli.py -web
 ```
 
 Opens `http://localhost:4747` and lays the same numbers out as a monthly statement - total up top, everything itemised below. It reads from disk on every request (the data's tiny, so there's no reason to cache and risk showing you something stale) and binds to localhost only - nothing gets uploaded, same as the CLI. It doesn't even pull fonts from a CDN; it uses whatever serif and mono your system already has, so it works with the network unplugged. Pick a port with `--port`, or pass `--no-open` if you don't want it grabbing your browser.
