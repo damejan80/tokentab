@@ -1,0 +1,21 @@
+[project]
+name = "tokentab"  
+version = "0.1.0" 
+description = "Adds up what your AI coding tools cost by reading their local session logs. Supports Claude Code, Codex, and Gemini CLI. CLI + web dashboard, runs offline."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["cli", "claude-code", "codex", "gemini", "token-usage", "cost-tracking", "ai-coding"]
+dependencies = [
+    "rich>=13.0",
+]
+
+[project.scripts]
+tokentab = "tokentab.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tokentab"]
